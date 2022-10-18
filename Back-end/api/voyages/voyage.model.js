@@ -9,11 +9,11 @@ const voyageSchema = new Schema(
       required: true
     },
     departure_time: {
-      type: timestamps,
+      type: Date,
       required: true
     },
     arrival_time: {
-      type: timestamps,
+      type: Date,
       required: true
     }
   },
