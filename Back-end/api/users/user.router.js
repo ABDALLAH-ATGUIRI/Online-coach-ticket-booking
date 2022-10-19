@@ -7,7 +7,7 @@ router.post("/", UserController.createUser);
 router.post("/login", UserController.login);
 
 
-// router.get("/", auth.checkToken, UserController.getAllUsers);
+router.get("/", UserController.getAllUsers);
 // router.get("/:id", auth.checkToken, UserController.getOneUserByUserId);
 
 export default { router };

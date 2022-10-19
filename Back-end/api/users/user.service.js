@@ -9,5 +9,8 @@ export default {
   },
   getUserById: (id) => {
     return userModel.Users.findById(id);
+  },
+  getUsers: async () => {
+    return  await userModel.Users.find();
   }
 };

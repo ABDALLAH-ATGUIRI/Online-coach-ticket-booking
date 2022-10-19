@@ -1,13 +1,23 @@
 import voyageModel from "./voyage.model.js";
+const Voyages = voyageModel.Voyages;
 
 export default {
   create: (data) => {
-    return voyageModel.voyage.create(data);
+    return Voyages.create(data);
   },
-  list: (email) => {
-    return voyageModel.voyage.findOne({ email: email });
+  list: (id) => {
+    return Voyages.findOne({ _id: id });
   },
-  getUserById: (id) => {
-    return voyageModel.voyage.findById(id);
+  getAll: async () => {
+    return await Voyages.find({});
+  },
+  getVoyageById: (id) => {
+    return Voyages.findById(id);
+  },
+  updateVoyage: (id, data) => {
+    return Voyages.findByIdAndUpdate(id, data);
+  },
+  deleteVoyage: (id) => {
+    return Voyages.deleteOne(id, data);
   }
 };

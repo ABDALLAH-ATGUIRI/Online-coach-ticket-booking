@@ -54,15 +54,30 @@ export default {
       });
     });
   },
-  getAllBuses: (req, res) => {
-    busServes.getBuses((err, results) => {
-      if (err) {
-        console.log(err);
+  getAllBuses: async (req, res) => {
+    const results = await busServes.getAllBuses();
+    return res.json({
+      success: 1,
+      data: results
+    });
+  },
+  updateOneBus: (req, res) => {
+    const id = req.params.id;
+    const body = req.body;
+    busServes.updateBus(id, body).then((results, error) => {
+      if (error) {
+        console.log(error);
         return;
+      }
+      if (!results) {
+        return results.json({
+          success: 0,
+          message: "Record not Found"
+        });
       }
       return res.json({
         success: 1,
-        data: results
+        data: "َAlready updated"
       });
     });
   }

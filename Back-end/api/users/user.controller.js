@@ -52,9 +52,13 @@ export default {
         const result = compareSync(body.password, results.password);
         if (result) {
           results.password = undefined;
-          const jsonwebtoken = sign({ result: results }, "qwe1234", {
-            expiresIn: "1h"
-          });
+          const jsonwebtoken = sign(
+            { result: results },
+            process.env.TOKEN_PASS,
+            {
+              expiresIn: "1h"
+            }
+          );
           return res.json({
             message: "login successfully",
             token: jsonwebtoken
@@ -92,16 +96,11 @@ export default {
       });
     });
   },
-  getAllUsers: (req, res) => {
-    userServes.getUsers((err, results) => {
-      if (err) {
-        console.log(err);
-        return;
-      }
-      return res.json({
-        success: 1,
-        data: results
-      });
+  getAllUsers: async (req, res) => {
+    const results = await userServes.getUsers();
+    return res.json({
+      success: 1,
+      data: results
     });
   }
 };

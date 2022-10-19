@@ -12,14 +12,6 @@ const busSchema = new Schema(
       type: String,
       required: true
     },
-    depart_station: {
-      type: String,
-      required: true
-    },
-    arrival_station: {
-      type: String,
-      required: true
-    },
     seatsNumber: {
       type: Intl,
       required: true

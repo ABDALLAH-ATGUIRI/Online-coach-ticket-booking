@@ -8,13 +8,21 @@ const voyageSchema = new Schema(
       type: String,
       required: true
     },
-    departure_time: {
-      type: Date,
+    depart_station: {
+      type: String,
       required: true
     },
-    arrival_time: {
-      type: Date,
+    arrival_station: {
+      type: String,
       required: true
+    },
+    breaking_point: {
+      type: Array,
+      default: []
+    },
+    Trips: {
+      type: Array,
+      default: []
     }
   },
   { timestamps: true }

@@ -52,7 +52,7 @@ export default {
         const result = compareSync(body.password, results.password);
         if (result) {
           results.password = undefined;
-          const jsonwebtoken = sign({ result: results }, "qwe1234", {
+          const jsonwebtoken = sign({ result: results }, process.env.TOKEN_PASS , {
             expiresIn: "1h"
           });
           return res.json({

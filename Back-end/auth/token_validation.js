@@ -7,7 +7,7 @@ export default {
       token = token.slice(7);
       if (token) {
         token = token.slice(7);
-        verify(token, "qwe1234", (err, decoded) => {
+        verify(token, process.env.TOKEN_PASS, (err, decoded) => {
           if (err) {
             res.json({
               success: 0,
