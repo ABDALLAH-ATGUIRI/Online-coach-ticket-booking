@@ -1,6 +1,6 @@
-import database from "../../config/database.js";
+
 import mongoose from "mongoose";
-database.pool();
+
 const Schema = mongoose.Schema;
 const adminSchema = new Schema(
   {

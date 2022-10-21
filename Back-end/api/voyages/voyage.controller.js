@@ -81,27 +81,43 @@ export default {
     const trip = [req.params.start, req.params.end];
     const results = await voyageServes.getAll();
     const voyages = [];
+    let obj = {
+      id_voyage: "",
+      bus: "",
+      start: "",
+      end: "",
+      prix: 0
+    };
     results.map((res) => {
       for (const key in res.Trips) {
         const element = res.Trips[key];
-
         if (element.departure_station == trip[0]) {
           let i = key;
+          obj.id_voyage = res._id;
+          obj.bus = res.Id_Bus;
           do {
             voyages.push(res.Trips[i]);
+            obj.prix += res.Trips[i].prix ? res.Trips[i].prix : 0;
             i++;
+            if (res.Trips.length == i) break;
           } while (res.Trips[i - 1].arrival_station != trip[1]);
         }
       }
-
-      const obj = {
-        id_voyage: res._id,
-        start: voyages[0].departure_station,
-        end: voyages[voyages.length - 1].arrival_station,
-        prix: 10
-      };
-      console.log(obj)
     });
+
+    if (voyages[voyages.length - 1].arrival_station == trip[1]) {
+      obj.start = voyages[0].departure_station;
+      obj.end = voyages[voyages.length - 1].arrival_station;
+      return res.json({
+        success: 1,
+        data: obj
+      });
+    } else {
+      return res.json({
+        success: 1,
+        data: "This Voyage not exit "
+      });
+    }
   }
 };
 
