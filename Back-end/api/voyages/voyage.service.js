@@ -9,7 +9,7 @@ export default {
     return Voyages.findOne({ _id: id });
   },
   getAll: async () => {
-    return await Voyages.find({});
+    return await Voyages.find({}).populate('bus');
   },
   getVoyageById: (id) => {
     return Voyages.findById(id);

@@ -14,11 +14,6 @@ const busSchema = new Schema(
     seatsNumber: {
       type: Intl,
       required: true
-    },
-    breakpoints: {
-      type: Array,
-      required: false,
-      default: []
     }
   },
   { timestamps: true }

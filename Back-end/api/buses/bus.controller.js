@@ -1,6 +1,4 @@
 import busServes from "./bus.service.js";
-import jsonwebtoken from "jsonwebtoken";
-const { sign } = jsonwebtoken;
 
 export default {
   createBus: (req, res) => {

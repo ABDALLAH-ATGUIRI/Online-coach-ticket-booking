@@ -3,8 +3,9 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 const voyageSchema = new Schema(
   {
-    Id_Bus: {
-      type: String,
+    bus: {
+      type: Schema.Types.ObjectId,
+      ref: "buses",
       required: true
     },
     depart_station: {

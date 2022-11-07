@@ -54,7 +54,7 @@ export default {
           results.password = undefined;
           const jsonwebtoken = sign(
             { result: results },
-            process.env.TOKEN_PASS,
+            process.env.USER_TOKEN_PASS,
             {
               expiresIn: "1h"
             }

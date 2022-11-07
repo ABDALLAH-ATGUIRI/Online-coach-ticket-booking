@@ -3,16 +3,19 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 const bookingSchema = new Schema(
   {
-    Id_voyage: {
-      type: String,
+    voyage: {
+      type: Schema.Types.ObjectId,
+      ref:"voyages",
       required: true
     },
     bus: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref:"buses",
       required: true
     },
-    Id_user: {
-      type: String,
+    user: {
+      type: Schema.Types.ObjectId,
+      ref:"users",
       required: true
     },
     depart_station: {
