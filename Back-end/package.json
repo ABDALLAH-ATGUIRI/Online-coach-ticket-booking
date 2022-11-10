@@ -6,6 +6,7 @@
   "dependencies": {
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.1",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "cose": "0.0.2",
     "dotenv": "^16.0.3",
@@ -15,7 +16,9 @@
     "method-override": "^3.0.0",
     "mongoose": "^6.6.5",
     "mysql": "^2.18.1",
-    "promise-mysql": "^5.2.0"
+    "pcrypt": "^0.2.0",
+    "promise-mysql": "^5.2.0",
+    "universal-cookie": "^4.0.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"

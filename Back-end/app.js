@@ -1,4 +1,7 @@
 import express from "express";
+import cors from "cors";
+import cookieParser from "cookie-parser";
+
 import database from "./config/database.js";
 import userRouter from "./api/users/user.router.js";
 import adminRouter from "./api/admin/admin.router.js";
@@ -6,9 +9,12 @@ import busRouter from "./api/buses/bus.router.js";
 import voyageRouter from "./api/voyages/voyage.router.js";
 import AppError from "./helpers/appError.js";
 import errorHandler from "./helpers/errorHandler.js";
+
 database.pool();
 const app = express();
+app.use(cors({ credentials: true, origin: "http://localhost:3001" }));
 app.use(express.json());
+app.use(cookieParser());
 
 app.get("/", (req, res) => {
   res.json({

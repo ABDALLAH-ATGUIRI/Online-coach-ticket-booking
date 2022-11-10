@@ -18,7 +18,7 @@ export default {
     } else {
       res.json({
         success: 0,
-        message: "Access denied! unautorized user"
+        message: "Access denied! unauthorized user"
       });
     }
   }

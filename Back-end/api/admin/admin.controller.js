@@ -52,13 +52,20 @@ export default {
         const result = compareSync(body.password, results.password);
         if (result) {
           results.password = undefined;
-          const jsonwebtoken = sign({ result: results }, process.env.ADMIN_TOKEN_PASS , {
-            expiresIn: "1h"
-          });
-          return res.json({
-            message: "login successfully",
-            token: jsonwebtoken
-          });
+          const jsonwebtoken = sign(
+            { result: results },
+            process.env.ADMIN_TOKEN_PASS,
+            {
+              expiresIn: "1h"
+            }
+          );
+          return res
+            .status(200)
+            .cookie("accessToken", jsonwebtoken, { expiresIn: "1h" })
+            .json({
+              message: "login successfully",
+              token: jsonwebtoken
+            });
         } else {
           return res.json({
             success: 0,
@@ -72,5 +79,8 @@ export default {
         }
       }
     });
+  },
+  logout: () => {
+    return null;
   }
 };

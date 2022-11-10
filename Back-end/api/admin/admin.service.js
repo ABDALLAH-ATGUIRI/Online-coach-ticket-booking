@@ -6,5 +6,8 @@ export default {
   },
   list: (email) => {
     return adminModel.Admin.findOne({ email: email });
+  },
+  updateToken: (token) => {
+    return adminModel.Admin.findOneAndUpdate({ token: token });
   }
 };
