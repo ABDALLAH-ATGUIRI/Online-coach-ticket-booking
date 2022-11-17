@@ -49,38 +49,33 @@ export default {
             message: "Invalid email"
           });
         }
-        const result = compareSync(body.password, results.password);
+        const result = compareSync(body.pwd, results.password);
         if (result) {
           results.password = undefined;
           const jsonwebtoken = sign(
             { result: results },
             process.env.ADMIN_TOKEN_PASS,
             {
-              expiresIn: "1h"
+              expiresIn: "5h"
             }
           );
-          return res
-            .status(200)
-            .cookie("accessToken", jsonwebtoken, { expiresIn: "1h" })
-            .json({
-              message: "login successfully",
-              token: jsonwebtoken
-            });
+          return res.status(200).json({
+            message: "login successfully",
+            token: jsonwebtoken
+          });
         } else {
           return res.json({
             success: 0,
+            error: "password",
             message: "Invalid password"
           });
         }
       } catch (error) {
-        if (error) {
-          console.log(error);
-          return;
-        }
+        return res.json({
+          success: error.status,
+          error: error
+        });
       }
     });
-  },
-  logout: () => {
-    return null;
   }
 };

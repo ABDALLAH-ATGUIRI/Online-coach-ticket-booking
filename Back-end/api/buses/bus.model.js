@@ -14,6 +14,17 @@ const busSchema = new Schema(
     seatsNumber: {
       type: Intl,
       required: true
+    },
+    statut: {
+      type: String,
+      enum: ["inMaintenance", "OutOfService", "inService"],
+      default: "OutOfService",
+      required: true
+    },
+    rule: {
+      type: String,
+      default: "ON",
+      required: true
     }
   },
   { timestamps: true }

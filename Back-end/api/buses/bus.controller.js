@@ -3,6 +3,7 @@ import busServes from "./bus.service.js";
 export default {
   createBus: (req, res) => {
     const body = req.body;
+    console.log(req);
     busServes.list(body.busNumber).then((bus, error) => {
       if (bus) {
         return res.json({
@@ -35,21 +36,26 @@ export default {
   },
   getOneBusById: (req, res) => {
     const id = req.params.id;
-    busServes.list(id, (error, results) => {
-      if (error) {
-        console.log(error);
-        return;
-      }
-      if (!results) {
-        return results.json({
+    busServes.getBusById(id).then((results, error) => {
+      console.log(error);
+      if (results) {
+        res.status(200).json({
+          success: 1,
+          message: "Data inserted Successfully...",
+          data: results
+        });
+      } else if (!results) {
+        res.json({
           success: 0,
-          message: "Record not Found"
+          message: "Failed to insert Data..."
         });
       }
-      return res.json({
-        success: 1,
-        data: results
-      });
+      if (err) {
+        return res.json({
+          success: 0,
+          message: error
+        });
+      }
     });
   },
   getAllBuses: async (req, res) => {
@@ -64,11 +70,34 @@ export default {
     const body = req.body;
     busServes.updateBus(id, body).then((results, error) => {
       if (error) {
-        console.log(error);
-        return;
+        return res.json({
+          success: 0,
+          error: error
+        });
       }
       if (!results) {
-        return results.json({
+        return res.json({
+          success: 0,
+          message: "Record not Found"
+        });
+      }
+      return res.json({
+        success: 1,
+        data: "َAlready updated"
+      });
+    });
+  },
+  deleteBus: (req, res) => {
+    const id = req.params.id;
+    busServes.deleteBus(id).then((results, error) => {
+      if (error) {
+        return res.json({
+          success: 0,
+          error: error
+        });
+      }
+      if (!results) {
+        return res.json({
           success: 0,
           message: "Record not Found"
         });

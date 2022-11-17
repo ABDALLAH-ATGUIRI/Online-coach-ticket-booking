@@ -20,6 +20,12 @@ const voyageSchema = new Schema(
       type: Array,
       default: []
     },
+    statut: {
+      type: String,
+      enum: ["inMaintenance", "OutOfService", "inService"],
+      default: "OutOfService",
+      required: true
+    },
     Trips: {
       type: Array,
       default: []

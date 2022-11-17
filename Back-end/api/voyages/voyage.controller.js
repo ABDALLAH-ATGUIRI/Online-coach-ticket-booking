@@ -77,6 +77,7 @@ export default {
       });
     });
   },
+
   searchVoyage: async (req, res) => {
     const trip = [req.params.start, req.params.end];
     const results = await voyageServes.getAll();
@@ -136,10 +137,11 @@ const createTrips = (data) => {
     obj.push({
       departure_station: newBody[i - 1],
       arrival_station: newBody[i],
-      entry_time: data.Trips[i - 1].entry_time || "",
-      exit_time: data.Trips[i - 1].exit_time || "",
-      prix: data.Trips[i - 1].prix || ""
+      entry_time: data.Trips > 0 ? data.Trips[i - 1].entry_time : null,
+      exit_time: data.Trips > 0 ? data.Trips[i - 1].exit_time : null,
+      prix: data.Trips > 0 ? data.Trips[i - 1].prix : null
     });
   }
+
   return obj;
 };
