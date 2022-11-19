@@ -16,7 +16,7 @@ tenant compte de son ergonomie et de son aspect fonctionnel;
 
 permettant l' évolution.
 
-produire le cahier des charges.
+produire le cahier des charges. 
 
 mettre au point la base.
 
