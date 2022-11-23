@@ -22,7 +22,7 @@ mettre au point la base.
 
 effectuer une veille technologique vigilante.
 
-# Critères de performance
+# Critères de performance 
 
 Documenter tout (Jira)
 creation de cahier de charge bien détaillé
