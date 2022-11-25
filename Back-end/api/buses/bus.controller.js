@@ -3,7 +3,6 @@ import busServes from "./bus.service.js";
 export default {
   createBus: (req, res) => {
     const body = req.body;
-    console.log(req);
     busServes.list(body.busNumber).then((bus, error) => {
       if (bus) {
         return res.json({

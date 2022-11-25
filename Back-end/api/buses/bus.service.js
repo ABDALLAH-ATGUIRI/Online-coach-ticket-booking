@@ -2,6 +2,9 @@ import busModel from "./bus.model.js";
 
 const Buses = busModel.Buses;
 export default {
+  list: (id) => {
+    return Buses.findOne({busNumber : id});
+  },
   create: (data) => {
     return Buses.create(data);
   },

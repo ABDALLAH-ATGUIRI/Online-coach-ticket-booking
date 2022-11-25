@@ -24,7 +24,6 @@ const busSchema = new Schema(
     rule: {
       type: String,
       default: "ON",
-      required: true
     }
   },
   { timestamps: true }
