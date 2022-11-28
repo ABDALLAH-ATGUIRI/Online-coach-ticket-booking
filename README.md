@@ -29,7 +29,7 @@ creation de cahier de charge bien détaillé
 Définir des contraintes pour maintenir l'intégrité des données
 Optimisation de performance
 Conserver la base de données dans un moteurs de base de données NoSQL
-
+  
 ## Backend 
 
 ### API
